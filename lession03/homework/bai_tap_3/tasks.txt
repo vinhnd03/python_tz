@@ -1,0 +1,6 @@
+Mô tả;YYYY-MM-DD;trạng_thái
+Học Python;2025-01-10;todo
+Đi tập gym;2025-01-09;done
+Đi chơi;2025-01-08;todo
+Chơi game;2025-12-14;done
+Làm bài tập;2025-12-14;done
