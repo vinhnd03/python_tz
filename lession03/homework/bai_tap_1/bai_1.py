@@ -16,3 +16,4 @@ print(f"Top 10 từ xuất hiện")
 
 for key, value in top_ten_words.items():
     print(f" - {key}: {value}")
+

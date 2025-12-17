@@ -4,14 +4,19 @@ from lession03.homework.bai_tap_3.task_service import load_tasks, check_all_task
     mark_task_done
 
 
-def display_menu(file_name: str) -> None:
-    task_list = load_tasks(file_name)
-    if len(task_list) == 0:
-        print("Danh sách trống")
-        return
+def display_menu() -> None:
+    file_name = input("Nhập tên file: ")
 
     exit_flag = False
     while not exit_flag:
+
+        task_list = load_tasks(file_name)
+        if len(task_list) == 0:
+            file_name = input("Danh sách trống, Xin mời nhập lại: ")
+            continue
+
+
+
         print("""
 ===============================
 1. Xem tất cả task
@@ -47,5 +52,5 @@ def display_menu(file_name: str) -> None:
             print("Lựa chọn không hợp lệ")
 
 #  tasks.txt
-file = input("Nhập tên file: ")
-display_menu(file)
+
+display_menu()

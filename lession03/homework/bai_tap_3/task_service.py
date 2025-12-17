@@ -40,12 +40,12 @@ def write_tasks (file_name: str, tasks: list[Task]) -> None:
 
 def check_all_tasks(task_list: list[Task]) -> None:
     for task in task_list:
-        print(task.__str__())
+        print(str(task))
 
 def check_overdue_tasks(task_list: list[Task]) -> None:
     for task in task_list:
         if task.is_overdue():
-            print(task.__str__())
+            print(str(task))
 
 def save_tasks(file_name: str, tasks: list[Task]) -> None:
     try:
@@ -63,15 +63,15 @@ def save_tasks(file_name: str, tasks: list[Task]) -> None:
 
 def mark_task_done(file_name:str, tasks: list[Task]) -> None:
     for index, task in enumerate(tasks):
-        print(f"{index + 1}. {task.__str__()}")
+        print(f"{index + 1}. {str(task)}")
 
     try:
         select_task = int(input("Nhập task muốn đánh dấu [done]: "))
-        if select_task < 1 or select_task > len(tasks) + 1:
+        if select_task < 1 or select_task > len(tasks):
             print("không có task yêu cầu")
             return
 
-        tasks[select_task-1].status = "done"
+        tasks[select_task - 1].status = "done"
         write_tasks(file_name, tasks)
         print("Cập nhật thành công")
     except ValueError:

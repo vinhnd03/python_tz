@@ -3,8 +3,7 @@ def read_file_content(filename: str) -> str:
 
     try:
         with open(filename, "r", encoding="utf-8") as f:
-            file_content = f.readlines()
-
+            file_content = " ".join(line.rstrip("\n") for line in f)
     except FileNotFoundError:
         print("Không tìm thấy file.")
     except Exception:
@@ -14,15 +13,16 @@ def read_file_content(filename: str) -> str:
 
 def count_word_frequency(text: str) -> dict[str, int]:
     punctuation_marks = ".,;:?!()[]"
-    words= get_word_list(text)
+    words = get_word_list(text)
 
     # code tham khảo
-    # words = ["".join([char for char in word if char not in punctuation_marks]) for word in words]
+    words = ["".join(char for char in word if char not in punctuation_marks) for word in words]
+    words = [word for word in words if word]
 
-    for word in words:
-        for char in word:
-            if char in punctuation_marks:
-                word = word.replace(char, "")
+    # for word in words:
+    #     for char in word:
+    #         if char in punctuation_marks:
+    #             word = word.replace(char, "")
 
     word_counts = {}
     for word in words:
@@ -36,11 +36,15 @@ def count_word_frequency(text: str) -> dict[str, int]:
     return top_ten_words
 
 def count_word (text: str) -> int:
-    words = get_word_list(text)
-    return len(words)
+    return len(get_word_list(text))
 
 def get_word_list (text: str) -> list[str]:
-    word_list = []
-    for line in text:
-        word_list = line.lower().split()
-    return word_list
+    return text.lower().split()
+
+content = read_file_content("article.txt")
+
+# print(content)
+# print(type(content))
+# print(get_word_list(content))
+# print(count_word_frequency(content))
+# print((count_word(content)))

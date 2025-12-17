@@ -6,17 +6,17 @@
 #     ("SV02", "Tran Thi B", 21),
 #     ("SV03", "Le Van C", 19),
 # ]
-#
+# #
 # # Dict lưu điểm từng môn cho từng sinh viên
 # scores = {
 #     "SV01": {"math": 8.0, "python": 7.5},
 #     "SV02": {"math": 6.5, "python": 8.5},
 #     "SV03": {"math": 9.0, "python": 9.5},
 # }
-#
+# #
 # # Set các môn học hiện có
 # courses = {"math", "python"}
-#
+
 # ## * Yêu cầu:
 # #   * a. Dùng vòng lặp + unpacking tuple để in ra danh sách học viên theo format
 # #     ```text
@@ -33,17 +33,17 @@
 #     print(f"{student_id} - {name} ({age})")
 #
 # ## b
-# python_score = []
+# python_scores = []
 #
-# for index, student in enumerate(students):
+# for student in students:
 #     student_id, name, age = student
-#     python_score.append((student_id, name, scores.get(student_id)["python"]))
+#     python_scores.append((student_id, name, scores.get(student_id)["python"]))
 #
-# print(python_score)
+# print(python_scores)
 #
 # ## c
-# max_score = max([score for student_id, name, score in python_score])
-# print(max_score)
+# student_id, name, score = max(python_scores, key=lambda item: item[2])
+# print(f"Top python: <{name}> - {score}")
 #
 # ## d
 # courses.add("database")
@@ -71,7 +71,7 @@
 #     {"order_id": "HD02", "items": [2, 3]},
 #     {"order_id": "HD03", "items": [1, 4]},
 # ]
-#
+# #
 # # * Yêu cầu:
 # #   * a. Tạo một dict `product_map` từ `products` để tra cứu nhanh theo `product_id` với dạng:
 # #     ```text
@@ -96,13 +96,11 @@
 # #       So luong san pham khac nhau da ban: <len(all_products_sold)>
 # #     ```
 #
-# ## a
+## a
 # product_map = {}
 # for product in products:
 #     product_id, name, price = product
-#     subDict = {"name": name, "price": price}
-#     newDict = {product_id: subDict}
-#     product_map.update(newDict)
+#     product_map[product_id] = {"name": name, "price": price}
 #
 # print(product_map)
 #

@@ -6,13 +6,13 @@ file = input('Nhập tên file: ')
 
 student_list = load_student_from_file(file)
 
-print([student.__str__() for student in student_list])
+print([str(student) for student in student_list])
 
 print(f'Điểm trung bình của lớp là: {calc_avg_score(student_list)}')
 
-print(f"Sinh viên có điểm cao nhất là: {find_top_student(student_list).__str__()}")
+print(f"Sinh viên có điểm cao nhất là: {str(find_top_student(student_list))}")
 
-print(f"Danh sách sinh viên bị rớt là: {[student.__str__() for student in filter_failed(student_list)]}")
+print(f"Danh sách sinh viên bị rớt là: {[str(student) for student in filter_failed(student_list)]}")
 
 
 

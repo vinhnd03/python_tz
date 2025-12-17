@@ -42,7 +42,7 @@ def find_top_student(students: list[Student]) -> Student | None:
         return None
 
     top_student = students[0]
-    for student in students[2:]:
+    for student in students[1:]:
         if top_student.score < student.score:
             top_student = student
     return top_student

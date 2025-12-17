@@ -5,7 +5,7 @@ class Student:
         self.score = score
 
     def is_passed(self) -> bool:
-        return True if self.score >= 5 else False
+        return  self.score >= 5
 
     def __str__(self) -> str:
         return f"{self.name} ({self.age} tuổi) - Điểm: {self.score}"
