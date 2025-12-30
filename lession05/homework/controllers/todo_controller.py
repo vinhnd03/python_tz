@@ -31,6 +31,16 @@ def list_todos(
         409: {"model": ErrorResponse, "description": "Title already exists"}
     }
 )
+def create_todo(
+        data: TodoCreate,
+        response: Response,
+        db: Session = Depends(get_db)
+) -> SuccessResponse[TodoOut]:
+    todo = service.create_todo(db, data)
+
+    response.headers["location"] = f"/todos/{todo.id}"
+
+    return SuccessResponse(data=TodoOut.model_validate(todo))
 
 @todo_router.get(
     "/{todo_id:int}",
@@ -65,17 +75,6 @@ def search_todo(
     )
     data = [TodoOut.model_validate(todo) for todo in todos]
     return SuccessResponse(data=data)
-
-def create_todo(
-        data: TodoCreate,
-        response: Response,
-        db: Session = Depends(get_db)
-) -> SuccessResponse[TodoOut]:
-    todo = service.create_todo(db, data)
-
-    response.headers["location"] = f"/todos/{todo.id}"
-
-    return SuccessResponse(data=TodoOut.model_validate(todo))
 
 @todo_router.patch(
     "/{todo_id:int}",
